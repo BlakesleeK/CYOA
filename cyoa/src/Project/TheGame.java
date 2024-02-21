@@ -13,7 +13,7 @@ public class TheGame {
     }
 
     public static void start() {
-        System.out.println("Are you ready to start? \n 1. yes \n 2. no");
+        System.out.println("Are you ready to start? \n (1) yes \n (2) no");
         int n = scan.nextInt();
         if (n == 1) {
             System.out.println("\n You are in school after hours. It's just you... or so you thought." +
@@ -21,14 +21,14 @@ public class TheGame {
                     " You peer in through the window and you see your science teacher. What is that he's doing...?" +
                     " Suddenly, a huge monster runs into view. Terrified, you are frozen in place. The beast notices you and growls, notifying his master of your presence.\n"
                     + "The science teacher turns to you, smiles, and says, "
-                    + "Oh, hello there! Come here and check this out! \"I have to get away from him!\" You think. \n" +
+                    + "\"Oh, hello there! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n" +
                     "You are standing in the middle of the hallway. Do you... " +
-                    "\n 1. Go to the science wing \n 2. Go to the arts wing");
+                    "\n (1) Go to the science wing \n (2) Go to the arts wing");
             int x = scan.nextInt();
             if (x == 1) {
                 ScienceWing.firstChoice();
             } else if (x == 2) {
-                // run art wing code
+                ArtWing.firstChoice();
             } else {
                 start();
             }
@@ -39,7 +39,7 @@ public class TheGame {
     }
 
     public static void death() {
-        System.out.println("Unfortunately, it looks like you lost. Play again? \n 1. yes \n 2. no");
+        System.out.println("[GAME OVER] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
             main(null);
