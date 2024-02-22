@@ -52,4 +52,18 @@ public class TheGame {
         }
 
     }
+
+    public static void win() {
+        System.out.println("[YOU WIN!] \n (1) play again \n (2) exit \n\n");
+        int n = scan.nextInt();
+        if (n == 1) {
+            main(null);
+        } else if (n == 2) {
+            System.out.println("Sorry to hear that... :( \n Bye for now!");
+            System.exit(0);
+        } else {
+            win();
+        }
+
+    }
 }
