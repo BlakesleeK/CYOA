@@ -29,7 +29,7 @@ public class ScienceWing {
         System.out.println(
                 "The monster, who was right behind you, saw you enter the locker. It ripped the door off its hinges before "
                         +
-                        "you could close it and grabbed you immediatly. \n Why did you think that would work?");
+                        "you could close it and grabbed you immediately. \n Why did you think that would work?");
         TheGame.death();
     }
 
@@ -70,7 +70,42 @@ public class ScienceWing {
                         + "You decide you have two choices. You can either throw one of the vials at the creature and hope it does something, "
                         + "or you can mix the chemicals together and then throw it." +
                         "\n (1) throw without mixing \n (2) mix first");
-        // look at the vials!!
+        int n = scan.nextInt();
+        if (n == 1) {
+            System.out.println("You pick up one of the vials just as the beast breaks down the door." +
+                    " You whip around and, with all your strength, throw the vial at the beast." +
+                    " You watch in horror as the beast's skin starts boiling. It's melting!" +
+                    "\n The beast is eventually nothing but a pile of brown goo and broken glass. As you get closer, wanting to inspect the disgusting site,"
+                    + "you realize that the floor around the beast has also melted. "
+                    + "\n \"oh well,\" you think, \"this is someone else's problem\"");
+            TheGame.win();
+        } else if (n == 2) {
+            System.out.println("As you pick up the vials and start to mix, the beast breaks down the door and growls. "
+                    + "Panicked, you throw the vial at the beast. As the mixture collides with the beast, an explosion rocks the room."
+                    + "You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flys at you, "
+                    + "spearing you through the heart.");
+            heroEnding();
+
+        } else {
+            vials();
+        }
+    }
+
+    public static void heroEnding() {
+        System.out.println(
+                "\nThe following day, word spreads quickly of your sacrifice. You are remembered as a hero of the town... "
+                        +
+                        "\n ...was it worth it?");
+        System.out.println("[HERO ENDING] \n (1) play again \n (2) exit");
+        int n = scan.nextInt();
+        if (n == 1) {
+            TheGame.main(null);
+        } else if (n == 2) {
+            System.out.println("Sorry to hear that :(");
+            System.exit(0);
+        } else {
+            heroEnding();
+        }
     }
 
     public static void biologyClass() {

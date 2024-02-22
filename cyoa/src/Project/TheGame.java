@@ -54,7 +54,7 @@ public class TheGame {
     }
 
     public static void win() {
-        System.out.println("[YOU WIN!] \n (1) play again \n (2) exit \n\n");
+        System.out.println("[YOU WIN!] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
             main(null);
