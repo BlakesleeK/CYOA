@@ -41,14 +41,21 @@ public class ScienceWing {
                 // maybe a cool thing would be if there was a rope somewhere in the room, and if
                 // you grab the rope you can get down from the tree and escape. (this requires
                 // an inventory!)
-                + "In the corner of the room, you notice two vials of chemicals, though you can't identify them. " +
-                "Maybe if you got closer, you could figure out what to do with them..." +
+                + "Outside the second window is a drop down two stories. Could you make that jump? "
+                + "In the corner of the room, you notice two vials of chemicals, though you can't identify them." +
+                "\n Maybe if you got closer, you could figure out what to do with them..." +
                 "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials");
         int n = scan.nextInt();
         if (n == 1) {
-            // you get stuck. Beast kills you. [game over]
+            System.out.println("As you climb out the window, the beast breaks through the door to the classroom." +
+                    "Fortunately, you're able to make it onto one of the branches. Unfortunately, the beast is also able to do that."
+                    +
+                    "With no way down, you are caught by the beast.");
+            TheGame.death();
         } else if (n == 2) {
-            // you fall 3 stories and die. [game over]
+            System.out.println(
+                    "The answer was no, you could not make that jump. The beast doesn't even follow you. You hit concrete and die on impact.");
+            TheGame.death();
         } else if (n == 3) {
             vials();
         } else {
@@ -58,6 +65,11 @@ public class ScienceWing {
     }
 
     public static void vials() {
+        System.out.println(
+                "You get closer to the vials. There are no labels, so you still have no idea what the chemicals do."
+                        + "You decide you have two choices. You can either throw one of the vials at the creature and hope it does something, "
+                        + "or you can mix the chemicals together and then throw it." +
+                        "\n (1) throw without mixing \n (2) mix first");
         // look at the vials!!
     }
 
