@@ -10,7 +10,7 @@ public class ScienceWing {
                 " To the right is a chemistry classroom. There might be some chemicals you can use in there. " +
                 "To the left, a biology classroom. You remember that the last biology class had done a dissection lab."
                 +
-                " There might be some useful materials still there. Directly in front of you is a locker that you could hide in."
+                " Directly in front of you is a locker that you could hide in."
                 + "\n Where do you go? \n (1) Chemistry classroom \n (2) Biology classroom \n (3) Locker");
         int n = scan.nextInt();
         if (n == 1) {
@@ -67,7 +67,7 @@ public class ScienceWing {
     public static void vials() {
         System.out.println(
                 "You get closer to the vials. There are no labels, so you still have no idea what the chemicals do."
-                        + "You decide you have two choices. You can either throw one of the vials at the creature and hope it does something, "
+                        + " You decide you have two choices. You can either throw one of the vials at the creature and hope it does something, "
                         + "or you can mix the chemicals together and then throw it." +
                         "\n (1) throw without mixing \n (2) mix first");
         int n = scan.nextInt();
@@ -82,7 +82,7 @@ public class ScienceWing {
         } else if (n == 2) {
             System.out.println("As you pick up the vials and start to mix, the beast breaks down the door and growls. "
                     + "Panicked, you throw the vial at the beast. As the mixture collides with the beast, an explosion rocks the room."
-                    + "You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flys at you, "
+                    + " You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flies at you, "
                     + "spearing you through the heart.");
             heroEnding();
 
@@ -95,8 +95,8 @@ public class ScienceWing {
         System.out.println(
                 "\nThe following day, word spreads quickly of your sacrifice. You are remembered as a hero of the town... "
                         +
-                        "\n ...was it worth it?");
-        System.out.println("[HERO ENDING] \n (1) play again \n (2) exit");
+                        "\n \n ...was it worth it?");
+        System.out.println("\n [HERO ENDING] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
             TheGame.main(null);
@@ -109,7 +109,39 @@ public class ScienceWing {
     }
 
     public static void biologyClass() {
+        System.out.println("You turn rapidly into the biology classroom, locking the door behind you."
+                + " Looking around you, you realize that there are still dissection materials sitting out. Maybe you could use those."
+                + "\nDo you... \n (1) hide in a corner \n (2) collect supplies");
+        int n = scan.nextInt();
+        if (n == 1) {
+            System.out.println(
+                    "You duck behind a desk in the corner of the room. You can hear the beast howling, but the sound soon fades. "
+                            + "Is the monster... gone? \nWith nothing to do but stay there, you fall asleep, hoping everything will be okay in the morning.");
+            System.out.println("[??? Ending] \n (1) play again \n (2) exit");
+            int x = scan.nextInt();
+            if (x == 1) {
+                TheGame.main(null);
+            } else if (x == 2) {
+                System.out.println("Sorry to hear that :(");
+                System.exit(0);
+            } else {
+                biologyClass();
+            }
+        } else if (n == 2) {
+            collectSupplies();
+        } else {
+            biologyClass();
+        }
+    }
 
+    public static void collectSupplies() {
+        /*
+         * 2. get supplies (max = two):
+         * - a chair
+         * - a scalpel
+         * - a pair of dissection scissors
+         * - an apple
+         */
     }
 
 }

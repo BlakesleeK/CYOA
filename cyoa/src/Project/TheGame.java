@@ -2,12 +2,20 @@ package Project;
 
 import java.util.Scanner;
 
+/*
+ * TODO:
+ - create inventory
+ -flesh out backstory (why are you in the school? Why is the teacher creating a beast?)
+    ---Maybe this is something you can discover in one of the rooms.
+-find places to use player name; otherwise, why does the player need to input their name at the start?
+ */
+
 public class TheGame {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String args[]) {
         System.out.println("Welcome to the game! What is your name? ");
-        String name = scan.next();
+        String name = scan.nextLine();
         System.out.println("Nice to meet you, " + name + ".");
         start();
     }
