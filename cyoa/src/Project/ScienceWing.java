@@ -99,7 +99,7 @@ public class ScienceWing {
         System.out.println("\n [HERO ENDING] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
-            TheGame.main(null);
+            TheGame.start();
         } else if (n == 2) {
             System.out.println("Sorry to hear that :(");
             System.exit(0);
@@ -120,7 +120,7 @@ public class ScienceWing {
             System.out.println("[??? Ending] \n (1) play again \n (2) exit");
             int x = scan.nextInt();
             if (x == 1) {
-                TheGame.main(null);
+                TheGame.start();
             } else if (x == 2) {
                 System.out.println("Sorry to hear that :(");
                 System.exit(0);
@@ -128,20 +128,145 @@ public class ScienceWing {
                 biologyClass();
             }
         } else if (n == 2) {
+            System.out.println(
+                    "You study your surroundings. On one table you see a pair of dissection scissors and a scalpel. " +
+                            "On the teachers desk, you see an apple. Finally, at each desk are two chairs. You could probably grab one. ");
             collectSupplies();
         } else {
             biologyClass();
         }
     }
 
+    static Item scissors = new Item("scissors");
+    static Item scalpel = new Item("scalpel");
+    static Item apple = new Item("apple");
+    static Item chair = new Item("chair");
+    static Inventory bioLab = new Inventory(2);
+
     public static void collectSupplies() {
-        /*
-         * 2. get supplies (max = two):
-         * - a chair
-         * - a scalpel
-         * - a pair of dissection scissors
-         * - an apple
-         */
+
+        // max of two!!
+        // make it a choice to pick up a second item?
+        System.out.println("What do you grab? \n (1) dissection scissors \n (2) scalpel \n (3) apple \n (4) chair");
+        int n = scan.nextInt();
+        if (n == 1) { // scissors
+            bioLab.addItem(scissors);
+            System.out.println("You pick up the scissors in one hand.");
+            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println(" (1) scalpel \n (2) apple \n (3) chair");
+            int a = scan.nextInt();
+            if (a == 1) {
+                bioLab.addItem(scalpel);
+                System.out.println("You pick up the scalpel in your other hand.");
+                monsterEnters();
+            } else if (a == 2) {
+                bioLab.addItem(apple);
+                System.out.println("You pick up the apple in your other hand.");
+                monsterEnters();
+            } else if (a == 3) {
+                bioLab.addItem(chair);
+                System.out.println("You pick up the chair in your other hand.");
+                monsterEnters();
+            } else {
+                bioLab.removeAll();
+                collectSupplies();
+            }
+        } else if (n == 2) { // scalpel
+            bioLab.addItem(scalpel);
+            System.out.println("You pick up the scalpel in one hand.");
+            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println(" (1) scissors \n (2) apple \n (3) chair");
+            int a = scan.nextInt();
+            if (a == 1) {
+                bioLab.addItem(scissors);
+                System.out.println("You pick up the scissors in your other hand.");
+                monsterEnters();
+            } else if (a == 2) {
+                bioLab.addItem(apple);
+                System.out.println("You pick up the apple in your other hand.");
+                monsterEnters();
+            } else if (a == 3) {
+                bioLab.addItem(chair);
+                System.out.println("You pick up the chair in your other hand.");
+                monsterEnters();
+            } else {
+                bioLab.removeAll();
+                collectSupplies();
+            }
+        } else if (n == 3) { // apple
+            bioLab.addItem(apple);
+            System.out.println("You pick up the apple in one hand.");
+            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println(" (1) scissors \n (2) scalpel \n (3) chair");
+            int a = scan.nextInt();
+            if (a == 1) {
+                bioLab.addItem(scissors);
+                System.out.println("You pick up the scissors in your other hand.");
+                monsterEnters();
+            } else if (a == 2) {
+                bioLab.addItem(scalpel);
+                System.out.println("You pick up the scalpel in your other hand.");
+                monsterEnters();
+            } else if (a == 3) {
+                bioLab.addItem(chair);
+                System.out.println("You pick up the chair in your other hand.");
+                monsterEnters();
+            } else {
+                bioLab.removeAll();
+                collectSupplies();
+            }
+        } else if (n == 4) { // chair
+            bioLab.addItem(chair);
+            System.out.println("You pick up the chair in one hand.");
+            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println(" (1) scissors \n (2) scalpel \n (3) apple");
+            int a = scan.nextInt();
+            if (a == 1) {
+                bioLab.addItem(scissors);
+                System.out.println("You pick up the scissors in your other hand.");
+                monsterEnters();
+            } else if (a == 2) {
+                bioLab.addItem(scalpel);
+                System.out.println("You pick up the scalpel in your other hand.");
+                monsterEnters();
+            } else if (a == 3) {
+                bioLab.addItem(apple);
+                System.out.println("You pick up the apple in your other hand.");
+                monsterEnters();
+            } else {
+                bioLab.removeAll();
+                collectSupplies();
+            }
+        } else {
+            collectSupplies();
+        }
+    }
+
+    public static void monsterEnters() {
+        // runs if you choose to collect items (in bio class)
+        System.out.println("\nAs soon as you pick up the second item, the beast barges in the room.");
+        if (bioLab.isPresent(chair) == true) {
+            System.out.println("You throw the chair at the beast, knocking him down.");
+            if (bioLab.isPresent(apple) == true) {
+                System.out
+                        .println("You throw the apple too, but it has no effect. The beast gets back up and eats you.");
+                TheGame.death();
+            } else if (bioLab.isPresent(scissors) == true) {
+                System.out.println(
+                        "While the beast is knocked down, use stab it in the heart with the scissors, killing him.");
+                TheGame.win();
+            } else if (bioLab.isPresent(scalpel) == true) {
+                System.out.println(
+                        "While the beast is knocked down, use stab it in the heart with the scalpel, killing him.");
+                TheGame.win();
+            }
+
+        } else {
+            System.out.println(
+                    "You charge the beast, sharp objects in hand. Unfortunately, the beast is much bigger than you, with a longer reach."
+                            + " It reaches a clawed hand out and strangles you.");
+            TheGame.death();
+        }
     }
 
 }

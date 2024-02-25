@@ -4,19 +4,18 @@ public class Inventory {
 
     public static void main(String[] args) {
         Item s0 = new Item("Knife");
-        // System.out.println(s0.getName());
         Item s1 = new Item("Banana Peel");
+        Inventory list = new Inventory(4);
+        list.addItem(s0);
+        list.addItem(s1);
+        System.out.println(list.listInventory());
+
     }
 
     private Item[] inventory;
 
     public Inventory(int maxItemSize) {
         this.inventory = new Item[maxItemSize];
-    }
-    // creates an array of items. this is the inventory of the player.
-
-    public String Hi() {
-        return "true";
     }
 
     public boolean addItem(Item item) {
@@ -34,6 +33,33 @@ public class Inventory {
             return null;
         } else {
             return this.inventory[i];
+        }
+    }
+
+    public boolean isPresent(Item item) {
+        boolean present = false;
+        for (int i = 0; i < this.inventory.length; i++) {
+            if (inventory[i] == item) {
+                present = true;
+                break;
+            }
+        }
+        return present;
+    }
+
+    public String listInventory() {
+        String wow = "";
+        for (int i = 0; i < this.inventory.length; i++) {
+            if (inventory[i] != null) {
+                wow += inventory[i].getName();
+            }
+        }
+        return wow;
+    }
+
+    public void removeAll(){
+        for(int i = 0; i < this.inventory.length; i++){
+            inventory[i] = null;
         }
     }
 

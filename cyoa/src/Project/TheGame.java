@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 /*
  * TODO:
- - create inventory
+ [CHECK]- create inventory 
+ [CHECK] - finish ScienceWing story
  -flesh out backstory (why are you in the school? Why is the teacher creating a beast?)
     ---Maybe this is something you can discover in one of the rooms.
 -find places to use player name; otherwise, why does the player need to input their name at the start?
+-ISSUE: after dying, when you replay the game, it doesn't let you use
  */
 
 public class TheGame {
@@ -48,10 +50,10 @@ public class TheGame {
     }
 
     public static void death() {
-        System.out.println("[GAME OVER] \n (1) play again \n (2) exit");
+        System.out.println("\n[GAME OVER] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
-            main(null);
+            start();
         } else if (n == 2) {
             System.out.println("Sorry to hear that :(");
             System.exit(0);
@@ -62,10 +64,10 @@ public class TheGame {
     }
 
     public static void win() {
-        System.out.println("[YOU WIN!] \n (1) play again \n (2) exit");
+        System.out.println("\n[YOU WIN!] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
-            main(null);
+            start();
         } else if (n == 2) {
             System.out.println("Sorry to hear that... :( \n Bye for now!");
             System.exit(0);
