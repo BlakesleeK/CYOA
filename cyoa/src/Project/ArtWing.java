@@ -94,28 +94,28 @@ public class ArtWing {
         if (n == 1) {
             artHall.addItem(thumbtacks);
             System.out.println(
-                    "You pick up the box and take off the lid. As the monster breaks down the door, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the thumbtacks at its face. \n"
+                    "You pick up the box and take off the lid. As the monster approaches, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the thumbtacks at its face. \n"
                             +
                             "In a mere stroke of luck, one of the tacks impales the creature's eye, and it crashes to the floor, dead.");
             TheGame.win();
         } else if (n == 2) {
             artHall.addItem(coloredPencil);
             System.out.println(
-                    "You pick up the colored pencil and grasp it firmly. As the monster breaks down the door, you bravely hurl the projectile at it. It hits the creature's back and bounces off its thick hide. \n"
+                    "You pick up the colored pencil and grasp it firmly. As the monster approaches, you bravely hurl the projectile at it. It hits the creature's back and bounces off its thick hide. \n"
                             +
                             "Your eyes widen as you realize that it is unharmed. In fact, it is only antagonized by the pencil, and it roars, aggressively charging towards you. Your last thoughts are, 'Why did I think a colored pencil would do anything?'");
             TheGame.death();
         } else if (n == 3) {
             artHall.addItem(scissors);
             System.out.println(
-                    "You pick up the scissors and grasp them firmly. As the monster breaks down the door, you bravely hurl the projectile at it. The scissors hit the creature's back and bounce off its thick hide. \n"
+                    "You pick up the scissors and grasp them firmly. As the monster approaches, you bravely hurl the projectile at it. The scissors hit the creature's back and bounce off its thick hide. \n"
                             +
                             "Your eyes widen as you realize that it is unharmed. In fact, it is only antagonized by the scissors, and it roars, aggressively charging towards you. Your last thoughts are, 'How did I think scissors would do anything against that THING?'");
             TheGame.death();
         } else if (n == 4) {
             artHall.addItem(paintTub);
             System.out.println(
-                    "You pick up the paint tub and take off the lid. As the monster breaks down the door, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the paint at its face. \n"
+                    "You pick up the paint tub and take off the lid. As the monster approaches, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the paint at its face. \n"
                             +
                             "It hits the creature straight in the face, going into its mouth and eyes. While it is temporarily blinded, you are able to run past it and escape.");
             TheGame.win();
