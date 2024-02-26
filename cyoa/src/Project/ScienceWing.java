@@ -18,6 +18,9 @@ public class ScienceWing {
                     "Hopefully this will give you a few minutes to figure out how to escape.");
             chemistryClass();
         } else if (n == 2) {
+            System.out.println("You turn rapidly into the biology classroom, locking the door behind you."
+                    + " Looking around you, you realize that there are still dissection materials sitting out. Maybe you could use those."
+                    + " There is also a big cabinet in the corner of the room. You wonder what's inside.");
             biologyClass();
         } else if (n == 3) {
             locker();
@@ -47,8 +50,7 @@ public class ScienceWing {
                         "Outside the first window is a tree that you could climb onto, though getting down to the ground may be difficult. "
                         + "Outside the second window is a drop down two stories. Could you make that jump? "
                         + "In the corner of the room, you notice two vials of chemicals, though you can't identify them."
-                        +
-                        "Maybe if you got closer, you could figure out what to do with them..." +
+                        + " Maybe if you got closer, you could figure out what to do with them..." +
                         "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials \n (4) search for something else");
         int n = scan.nextInt();
         if (n == 1) {
@@ -67,6 +69,7 @@ public class ScienceWing {
         } else if (n == 2) {
             System.out.println(
                     "The answer was no, you could not make that jump. The beast doesn't even follow you. You hit concrete and die on impact.");
+            chemClass.removeAll();
             TheGame.death();
         } else if (n == 3) {
             vials();
@@ -77,13 +80,29 @@ public class ScienceWing {
                             "\n (1) pick up rope \n (2) pick up shield");
             int f = scan.nextInt();
             if (f == 1) {
-                chemClass.addItem(rope);
-                System.out.println("You grab the rope. Now you're running out of time.");
-                chemistryClass();
+                if (chemClass.isPresent(shield) == true) {
+                    chemClass.removeAll();
+                    System.out.println("NOTE: grabbing this item means that you have to drop the shield.");
+                    chemClass.addItem(rope);
+                    System.out.println("You grab the rope. Now you're running out of time.");
+                    chemistryClass();
+                } else {
+                    chemClass.addItem(rope);
+                    System.out.println("You grab the rope. Now you're running out of time.");
+                    chemistryClass();
+                }
             } else if (f == 2) {
-                chemClass.addItem(shield);
-                System.out.println("You grab the shield. Now you're running out of time.");
-                chemistryClass();
+                if (chemClass.isPresent(rope) == true) {
+                    chemClass.removeAll();
+                    System.out.println("NOTE: grabbing this item means that you have to drop the rope.");
+                    chemClass.addItem(shield);
+                    System.out.println("You grab the shield. Now you're running out of time.");
+                    chemistryClass();
+                } else {
+                    chemClass.addItem(shield);
+                    System.out.println("You grab the shield. Now you're running out of time.");
+                    chemistryClass();
+                }
             } else {
                 chemistryClass();
             }
@@ -107,6 +126,7 @@ public class ScienceWing {
                     "\n The beast is eventually nothing but a pile of brown goo and broken glass. As you get closer, wanting to inspect the disgusting site,"
                     + "you realize that the floor around the beast has also melted. "
                     + "\n \"oh well,\" you think, \"this is someone else's problem\"");
+            chemClass.removeAll();
             TheGame.win();
         } else if (n == 2) {
             System.out.println("As you pick up the vials and start to mix, the beast breaks down the door and growls. "
@@ -122,6 +142,7 @@ public class ScienceWing {
                 System.out.println(
                         "You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flies at you, "
                                 + "spearing you through the heart.");
+                chemClass.removeAll();
                 heroEnding();
             }
 
@@ -148,9 +169,7 @@ public class ScienceWing {
     }
 
     public static void biologyClass() {
-        System.out.println("You turn rapidly into the biology classroom, locking the door behind you."
-                + " Looking around you, you realize that there are still dissection materials sitting out. Maybe you could use those."
-                + "\nDo you... \n (1) hide in a corner \n (2) collect supplies");
+        System.out.println("Do you... \n (1) hide in a corner \n (2) collect supplies \n (3) open cabinet");
         int n = scan.nextInt();
         if (n == 1) {
             System.out.println(
@@ -164,13 +183,25 @@ public class ScienceWing {
                 System.out.println("Sorry to hear that :(");
                 System.exit(0);
             } else {
-                biologyClass();
+                System.exit(0);
             }
         } else if (n == 2) {
             System.out.println(
                     "You study your surroundings. On one table you see a pair of dissection scissors and a scalpel. " +
                             "On the teachers desk, you see an apple. Finally, at each desk are two chairs. You could probably grab one. ");
             collectSupplies();
+        } else if (n == 3) {
+            if (bioLab.isPresent(docs) == true) {
+                System.out.println("You've already searched here!");
+                biologyClass();
+            } else {
+                System.out.println(
+                        "You go over to the cabinet and open the door, which is unlocked. \"Strange,\" you think, \"normally the teachers keep this cabinet locked. Maybe they opened it for the lab.\""
+                                +
+                                "\nThe inside is empty except for a single folder. You grab the folder and shut the cabinet door.");
+                bioLab.addItem(docs);
+                biologyClass();
+            }
         } else {
             biologyClass();
         }
@@ -180,7 +211,8 @@ public class ScienceWing {
     static Item scalpel = new Item("scalpel");
     static Item apple = new Item("apple");
     static Item chair = new Item("chair");
-    static Inventory bioLab = new Inventory(2);
+    static Item docs = new Item("documents");
+    static Inventory bioLab = new Inventory(3);
 
     public static void collectSupplies() {
 
@@ -282,6 +314,9 @@ public class ScienceWing {
     public static void monsterEnters() {
         // runs if you choose to collect items (in bio class)
         System.out.println("\nAs soon as you pick up the second item, the beast barges in the room.");
+        if (bioLab.isPresent(docs) == true) {
+            withDocuments();
+        }
         if (bioLab.isPresent(chair) == true) {
             System.out.println("You throw the chair at the beast, knocking him down.");
             if (bioLab.isPresent(apple) == true) {
@@ -291,12 +326,12 @@ public class ScienceWing {
                 TheGame.death();
             } else if (bioLab.isPresent(scissors) == true) {
                 System.out.println(
-                        "While the beast is knocked down, use stab it in the heart with the scissors, killing him.");
+                        "While the beast is knocked down, you stab it in the heart with the scissors, killing him.");
                 bioLab.removeAll();
                 TheGame.win();
             } else if (bioLab.isPresent(scalpel) == true) {
                 System.out.println(
-                        "While the beast is knocked down, use stab it in the heart with the scalpel, killing him.");
+                        "While the beast is knocked down, you stab it in the heart with the scalpel, killing him.");
                 bioLab.removeAll();
                 TheGame.win();
             }
@@ -307,6 +342,31 @@ public class ScienceWing {
                             + " It reaches a clawed hand out and strangles you.");
             bioLab.removeAll();
             TheGame.death();
+        }
+    }
+
+    static boolean refusedDocs = false;
+
+    public static void withDocuments() {
+        System.out.println(
+                "Behind the beast, the science teacher strolls into the room. Upon seeing the documents in your hand, his smiles drops."
+                        + "\n\"Where did you get those?\" he demands. You hesitate. \"Alright then, don't talk,\" he says. \"Just give them to me and we won't have any trouble."
+                        +
+                        "\n (1) give him the documents \n (2) refuse");
+        int n = scan.nextInt();
+        if (n == 1) {
+            refusedDocs = false;
+            System.out.println(
+                    "You slowly hand him the folder. As soon as he has it in his hands, he relaxes. \n\"Thank you,\" he says, \"you should be proud.\""
+                            +
+                            "\n\"Why?\" You ask" +
+                            "\n\"Because your final moments will be used to do the correct thing.\" \nHe unleashes the beast.");
+        } else if (n == 2) {
+            refusedDocs = true;
+            System.out.println(
+                    "\"You... aren't giving it to me?\" the teacher says. \"Very well then...\" \nHe unleashes the beast.");
+        } else {
+            withDocuments();
         }
     }
 
