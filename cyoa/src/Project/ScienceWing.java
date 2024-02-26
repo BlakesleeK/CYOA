@@ -41,12 +41,6 @@ public class ScienceWing {
     // don't die when you throw the vials
     static Inventory chemClass = new Inventory(1);
 
-    /*
-     * TODO:
-     * if you have the rope, you don't die on the tree. If you have the shield, you
-     * don't die when you mix and then throw the vials.
-     */
-
     public static void chemistryClass() {
         System.out.println(
                 "Looking around the room, you notice two windows that may serve as possible escape routes. " +
@@ -190,14 +184,12 @@ public class ScienceWing {
 
     public static void collectSupplies() {
 
-        // max of two!!
-        // make it a choice to pick up a second item?
         System.out.println("What do you grab? \n (1) dissection scissors \n (2) scalpel \n (3) apple \n (4) chair");
         int n = scan.nextInt();
         if (n == 1) { // scissors
             bioLab.addItem(scissors);
             System.out.println("You pick up the scissors in one hand.");
-            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scalpel \n (2) apple \n (3) chair");
             int a = scan.nextInt();
             if (a == 1) {
@@ -219,7 +211,7 @@ public class ScienceWing {
         } else if (n == 2) { // scalpel
             bioLab.addItem(scalpel);
             System.out.println("You pick up the scalpel in one hand.");
-            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) apple \n (3) chair");
             int a = scan.nextInt();
             if (a == 1) {
@@ -241,7 +233,7 @@ public class ScienceWing {
         } else if (n == 3) { // apple
             bioLab.addItem(apple);
             System.out.println("You pick up the apple in one hand.");
-            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) scalpel \n (3) chair");
             int a = scan.nextInt();
             if (a == 1) {
@@ -263,7 +255,7 @@ public class ScienceWing {
         } else if (n == 4) { // chair
             bioLab.addItem(chair);
             System.out.println("You pick up the chair in one hand.");
-            System.out.println("You still have a free hand. Pick a second item:");
+            System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) scalpel \n (3) apple");
             int a = scan.nextInt();
             if (a == 1) {

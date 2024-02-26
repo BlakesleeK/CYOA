@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 /*
  * TODO:
- [CHECK]- create inventory 
- [CHECK] - finish ScienceWing story
  -flesh out backstory (why are you in the school? Why is the teacher creating a beast?)
     ---Maybe this is something you can discover in one of the rooms.
 -find places to use player name; otherwise, why does the player need to input their name at the start?
--ISSUE: after dying, when you replay the game, it doesn't let you use
+-add more parts that have to do with Inventory that will affect the game later (as opposed to immediately after)
  */
 
 public class TheGame {
@@ -17,15 +15,15 @@ public class TheGame {
 
     public static void main(String args[]) {
         System.out.println("Welcome to the game! What is your name? ");
-        String name = scan.nextLine();
-        System.out.println("Nice to meet you, " + name + ".");
+        String playerName = scan.nextLine();
+        System.out.println("Nice to meet you, " + playerName + ".");
         start();
     }
 
     public static void start() {
         System.out.println("Are you ready to start? \n (1) yes \n (2) no");
         int n = scan.nextInt();
-        if (n == 1) { 
+        if (n == 1) {
             System.out.println("\n You are in school after hours. It's just you... or so you thought." +
                     " As you are leaving the building, you notice one classroom light still on." +
                     " You peer in through the window and you see your science teacher. What is he doing...?" +
