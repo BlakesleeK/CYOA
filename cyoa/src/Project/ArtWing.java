@@ -28,7 +28,8 @@ public class ArtWing {
                 "You quickly go into the room and lock the door behind you. You’re safe for now, but the creature's distant howls remind you time is running out. Should you…\n"
                         +
                         "(1) Crouch behind the teacher’s desk\n" +
-                        "(2) Escape out the window\n");
+                        "(2) Escape out the window\n" +
+                        "(3) Find a weapon");
         int n = scan.nextInt();
         if (n == 1) {
             System.out.println(
@@ -44,6 +45,9 @@ public class ArtWing {
                             +
                             "“It’s truly a pity,” he says sympathetically, “you were one of the good ones.” Then he lets the monster loose.\n\n");
             TheGame.death();
+        } else if (n == 3) {
+            System.out.println("You run over to the large art cabinet and open it.");
+            collectSupplies();
         } else {
             System.out.println("Whoops, this isn't an option.");
             classroom();
@@ -55,7 +59,8 @@ public class ArtWing {
                 "You reach the end of the hallway. \"Now I have to figure out how to get out of here,\" you think. Do you…\n"
                         +
                         "(1) Take the elevator downstairs\n" +
-                        "(2) Take the stairs");
+                        "(2) Take the stairs\n" +
+                        "(3) Stay and fight the monster");
         int n = scan.nextInt();
         if (n == 1) {
             System.out.println(
@@ -67,9 +72,55 @@ public class ArtWing {
             System.out.println(
                     "You race down the stairs, jumping two at a time. But you still aren’t faster than the beast chasing you. In 5 swift seconds, it catches up to you, tackles you to the ground, and tears you up.\n");
             TheGame.death();
+        } else if (n == 3) {
+            System.out.println("First you need a weapon. You open the nearest locker and look inside.");
+            collectSupplies();
         } else {
             System.out.println("Whoops, this isn't an option.");
             hallway();
+        }
+    }
+
+    static Item thumbtacks = new Item("tacks");
+    static Item coloredPencil = new Item("colored pencil");
+    static Item scissors = new Item("scissors");
+    static Item paintTub = new Item("paint tub");
+    static Inventory artHall = new Inventory(2);
+
+    public static void collectSupplies() {
+        System.out.println(
+                "You find 4 items. Which one do you grab? \n (1) a box of thumbtacks \n (2) a colored pencil \n (3) scissors \n (4) paint tub \n");
+        int n = scan.nextInt();
+        if (n == 1) {
+            artHall.addItem(thumbtacks);
+            System.out.println(
+                    "You pick up the box and take off the lid. As the monster breaks down the door, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the thumbtacks at its face. \n"
+                            +
+                            "In a mere stroke of luck, one of the tacks impales the creature's eye, and it crashes to the floor, dead.");
+            TheGame.win();
+        } else if (n == 2) {
+            artHall.addItem(coloredPencil);
+            System.out.println(
+                    "You pick up the colored pencil and grasp it firmly. As the monster breaks down the door, you bravely hurl the projectile at it. It hits the creature's back and bounces off its thick hide. \n"
+                            +
+                            "Your eyes widen as you realize that it is unharmed. In fact, it is only antagonized by the pencil, and it roars, aggressively charging towards you. Your last thoughts are, 'Why did I think a colored pencil would do anything?'");
+            TheGame.death();
+        } else if (n == 3) {
+            artHall.addItem(scissors);
+            System.out.println(
+                    "You pick up the scissors and grasp them firmly. As the monster breaks down the door, you bravely hurl the projectile at it. The scissors hit the creature's back and bounce off its thick hide. \n"
+                            +
+                            "Your eyes widen as you realize that it is unharmed. In fact, it is only antagonized by the scissors, and it roars, aggressively charging towards you. Your last thoughts are, 'How did I think scissors would do anything against that THING?'");
+            TheGame.death();
+        } else if (n == 4) {
+            artHall.addItem(paintTub);
+            System.out.println(
+                    "You pick up the paint tub and take off the lid. As the monster breaks down the door, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the paint at its face. \n"
+                            +
+                            "It hits the creature straight in the face, going into its mouth and eyes. While it is temporarily blinded, you are able to run past it and escape.");
+            TheGame.win();
+        } else {
+            collectSupplies();
         }
     }
 
