@@ -250,21 +250,25 @@ public class ScienceWing {
             if (bioLab.isPresent(apple) == true) {
                 System.out
                         .println("You throw the apple too, but it has no effect. The beast gets back up and eats you.");
+                bioLab.removeAll();
                 TheGame.death();
             } else if (bioLab.isPresent(scissors) == true) {
                 System.out.println(
                         "While the beast is knocked down, use stab it in the heart with the scissors, killing him.");
+                bioLab.removeAll();
                 TheGame.win();
             } else if (bioLab.isPresent(scalpel) == true) {
                 System.out.println(
                         "While the beast is knocked down, use stab it in the heart with the scalpel, killing him.");
+                bioLab.removeAll();
                 TheGame.win();
             }
 
         } else {
             System.out.println(
-                    "You charge the beast, sharp objects in hand. Unfortunately, the beast is much bigger than you, with a longer reach."
+                    "You charge the beast, sharp object in hand. Unfortunately, the beast is much bigger than you, with a longer reach."
                             + " It reaches a clawed hand out and strangles you.");
+            bioLab.removeAll();
             TheGame.death();
         }
     }

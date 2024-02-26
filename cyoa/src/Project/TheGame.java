@@ -28,7 +28,7 @@ public class TheGame {
         if (n == 1) {
             System.out.println("\n You are in school after hours. It's just you... or so you thought." +
                     " As you are leaving the building, you notice one classroom light still on." +
-                    " You peer in through the window and you see your science teacher. What is he's doing...?" +
+                    " You peer in through the window and you see your science teacher. What is he doing...?" +
                     " Suddenly, a huge monster runs into view. Terrified, you are frozen in place. The beast notices you and growls, notifying his master of your presence.\n"
                     + "The science teacher turns to you, smiles, and says, "
                     + "\"Oh, hello there! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n"
