@@ -2,14 +2,15 @@ package Project;
 
 public class Inventory {
 
+
     public static void main(String[] args) {
+        //testing stuff:
         Item s0 = new Item("Knife");
         Item s1 = new Item("Banana Peel");
         Inventory list = new Inventory(4);
         list.addItem(s0);
         list.addItem(s1);
         System.out.println(list.listInventory());
-
     }
 
     private Item[] inventory;

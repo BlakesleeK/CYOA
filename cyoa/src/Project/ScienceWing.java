@@ -14,6 +14,8 @@ public class ScienceWing {
                 + "\n Where do you go? \n (1) Chemistry classroom \n (2) Biology classroom \n (3) Locker");
         int n = scan.nextInt();
         if (n == 1) {
+            System.out.println("You quickly run into the classroom and lock the door behind you. " +
+                    "Hopefully this will give you a few minutes to figure out how to escape.");
             chemistryClass();
         } else if (n == 2) {
             biologyClass();
@@ -33,31 +35,64 @@ public class ScienceWing {
         TheGame.death();
     }
 
+    private static Item rope = new Item("rope");
+    // don't die when you go onto the tree
+    private static Item shield = new Item("shield");
+    // don't die when you throw the vials
+    static Inventory chemClass = new Inventory(1);
+
+    /*
+     * TODO:
+     * if you have the rope, you don't die on the tree. If you have the shield, you
+     * don't die when you mix and then throw the vials.
+     */
+
     public static void chemistryClass() {
-        System.out.println("You quickly run into the classroom and lock the door behind you. " +
-                "Hopefully this will give you a few minutes to figure out how to escape. " +
+        System.out.println(
                 "Looking around the room, you notice two windows that may serve as possible escape routes. " +
-                "Outside the first window is a tree that you could climb onto, though getting down to the ground may be difficult. "
-                // maybe a cool thing would be if there was a rope somewhere in the room, and if
-                // you grab the rope you can get down from the tree and escape. (this requires
-                // an inventory!)
-                + "Outside the second window is a drop down two stories. Could you make that jump? "
-                + "In the corner of the room, you notice two vials of chemicals, though you can't identify them." +
-                "\n Maybe if you got closer, you could figure out what to do with them..." +
-                "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials");
+                        "Outside the first window is a tree that you could climb onto, though getting down to the ground may be difficult. "
+                        + "Outside the second window is a drop down two stories. Could you make that jump? "
+                        + "In the corner of the room, you notice two vials of chemicals, though you can't identify them."
+                        +
+                        "Maybe if you got closer, you could figure out what to do with them..." +
+                        "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials \n (4) search for something else");
         int n = scan.nextInt();
         if (n == 1) {
             System.out.println("As you climb out the window, the beast breaks through the door to the classroom." +
-                    "Fortunately, you're able to make it onto one of the branches. Unfortunately, the beast is also able to do that."
-                    +
-                    "With no way down, you are caught by the beast.");
-            TheGame.death();
+                    "Fortunately, you're able to make it onto one of the branches. Unfortunately, the beast is also able to do that.");
+            if (chemClass.isPresent(rope) == true) {
+                System.out.println(
+                        "Thankfully, you grabbed that rope earlier. You quickly tie one end to a branch and crawl down, making it safely to the ground."
+                                + " The veast tries to follow you, but the rope snaps under its weight almost immediately. The beast crashes to the ground, unconscious, and you are able to get away.");
+                chemClass.removeAll();
+                TheGame.win();
+            } else {
+                System.out.println("With no way down, you are caught by the beast.");
+                TheGame.death();
+            }
         } else if (n == 2) {
             System.out.println(
                     "The answer was no, you could not make that jump. The beast doesn't even follow you. You hit concrete and die on impact.");
             TheGame.death();
         } else if (n == 3) {
             vials();
+        } else if (n == 4) {
+            System.out.println(
+                    "You ignore all three options and instead search the room for a different item. You end up finding a rope and a shield — odd that they're in a chemistry class — but you can only hold one"
+                            +
+                            "\n (1) pick up rope \n (2) pick up shield");
+            int f = scan.nextInt();
+            if (f == 1) {
+                chemClass.addItem(rope);
+                System.out.println("You grab the rope. Now you're running out of time.");
+                chemistryClass();
+            } else if (f == 2) {
+                chemClass.addItem(shield);
+                System.out.println("You grab the shield. Now you're running out of time.");
+                chemistryClass();
+            } else {
+                chemistryClass();
+            }
         } else {
             System.out.println("Whoops, this isn't an option.");
             chemistryClass();
@@ -81,10 +116,20 @@ public class ScienceWing {
             TheGame.win();
         } else if (n == 2) {
             System.out.println("As you pick up the vials and start to mix, the beast breaks down the door and growls. "
-                    + "Panicked, you throw the vial at the beast. As the mixture collides with the beast, an explosion rocks the room."
-                    + " You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flies at you, "
-                    + "spearing you through the heart.");
-            heroEnding();
+                    + "Panicked, you throw the vial at it. As the mixture collides with the beast, an explosion rocks the room.");
+            if (chemClass.isPresent(shield) == true) {
+                System.out.println(
+                        "You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flies at you. "
+                                +
+                                "It's fortunate that you grabbed that shield. You raise it just in time for the glass to bounce off it, saving your life.");
+                chemClass.removeAll();
+                TheGame.win();
+            } else {
+                System.out.println(
+                        "You see the beast fall to the ground, dead. You revel in your victory for a millisecond before a piece of glass flies at you, "
+                                + "spearing you through the heart.");
+                heroEnding();
+            }
 
         } else {
             vials();

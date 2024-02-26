@@ -25,7 +25,7 @@ public class TheGame {
     public static void start() {
         System.out.println("Are you ready to start? \n (1) yes \n (2) no");
         int n = scan.nextInt();
-        if (n == 1) {
+        if (n == 1) { 
             System.out.println("\n You are in school after hours. It's just you... or so you thought." +
                     " As you are leaving the building, you notice one classroom light still on." +
                     " You peer in through the window and you see your science teacher. What is he doing...?" +
