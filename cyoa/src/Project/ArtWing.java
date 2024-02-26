@@ -5,25 +5,38 @@ import java.util.Scanner;
 public class ArtWing {
     static Scanner scan = new Scanner(System.in);
 
+    static Item key = new Item("key");
+    static Inventory artHall = new Inventory(2);
+
     public static void firstChoice() {
-        System.out.println(
-                "You turn to the right and run down the arts hallway. Stopping to catch your breath, you realize that one of the classrooms’ doors is ajar. Do you…\n"
+        System.out.println("You turn to the right and run down the arts hallway. Out of the corner of your eye, you see a shiny copper key on the floor. Do you\n (1) Waste time and pick it up \n (2) Keep running");
+        int n = scan.nextInt();
+        if (n == 1) {
+            artHall.addItem(key);
+        } else if (n == 2) {
+            System.out.println("Stopping to catch your breath, you realize that one of the classrooms’ doors is ajar. Do you…\n"
                         + //
                         "(1) Hide in the classroom\n" + //
                         "(2) Keep running\n" + //
                         "");
-        int n = scan.nextInt();
-        if (n == 1) {
-            classroom();
-        } else if (n == 2) {
-            hallway();
+            int r = scan.nextInt();
+            if (r == 1) {
+                classroom();
+            } else if (r == 2) {
+                hallway();
+            } else {
+                System.out.println("Hey, this isn't an option!");
+                firstChoice();
+            }
         } else {
             System.out.println("Hey, this isn't an option!");
             firstChoice();
         }
+        
     }
 
     public static void classroom() {
+        System.out.println("You try to open the door, but its locked and you don't have the key");
         System.out.println(
                 "You quickly go into the room and lock the door behind you. You’re safe for now, but the creature's distant howls remind you time is running out. Should you…\n"
                         +
@@ -85,8 +98,7 @@ public class ArtWing {
     static Item coloredPencil = new Item("colored pencil");
     static Item scissors = new Item("scissors");
     static Item paintTub = new Item("paint tub");
-    static Inventory artHall = new Inventory(2);
-
+    
     public static void collectSupplies() {
         System.out.println(
                 "You find 4 items. Which one do you grab? \n (1) a box of thumbtacks \n (2) a colored pencil \n (3) scissors \n (4) paint tub \n");
