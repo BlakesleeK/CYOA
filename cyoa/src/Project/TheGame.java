@@ -24,7 +24,8 @@ public class TheGame {
                     " You peer in through the window and you see your science teacher. What is he doing...?" +
                     " Suddenly, a huge monster runs into view. Terrified, you are frozen in place. The beast notices you and growls, notifying his master of your presence.\n"
                     + "The science teacher turns to you, smiles, and says, "
-                    + "\"Oh, hello " + playerName + "! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n"
+                    + "\"Oh, hello " + playerName
+                    + "! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n"
                     +
                     "You are standing in the middle of the hallway. Do you... " +
                     "\n (1) Go to the science wing \n (2) Go to the arts wing");
@@ -43,6 +44,21 @@ public class TheGame {
     }
 
     public static void death() {
+        System.out.println("\n         _.---,._,'");
+        System.out.println("       /' _.--.<");
+        System.out.println("         /'     `'");
+        System.out.println("       /' _.---._____");
+        System.out.println("       \\.'   ___, .-'`");
+        System.out.println("           /'    \\\\             .");
+        System.out.println("         /'       `-.          -|-");
+        System.out.println("        |                       |");
+        System.out.println("        |                   .-'~~~`-.");
+        System.out.println("        |                 .'         `.");
+        System.out.println("        |                 |  R  I  P  |");
+        System.out.println("        |                 |           |");
+        System.out.println("        |                 |           |");
+        System.out.println("         \\              \\\\|           |//");
+        System.out.println("   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         System.out.println("\n[GAME OVER] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
@@ -57,6 +73,17 @@ public class TheGame {
     }
 
     public static void win() {
+        System.out.println("\n    .-'\"'-.");
+        System.out.println("   / #     \\");
+        System.out.println("  : #       :  .-'\"'-.");
+        System.out.println("   \\       /  / #     \\");
+        System.out.println("    \\     /  : #       :");
+        System.out.println("     `'q'`    \\       /");
+        System.out.println("       (       \\     /");
+        System.out.println("        )       `'p'`");
+        System.out.println("       (          )");
+        System.out.println("        )        (");
+        System.out.println("                  )");
         System.out.println("\n[YOU WIN!] \n (1) play again \n (2) exit");
         int n = scan.nextInt();
         if (n == 1) {
