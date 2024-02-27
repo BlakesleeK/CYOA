@@ -2,13 +2,7 @@ package Project;
 
 import java.util.Scanner;
 
-/*
- * TODO:
- -flesh out backstory (why are you in the school? Why is the teacher creating a beast?)
-    ---Maybe this is something you can discover in one of the rooms.
--find places to use player name; otherwise, why does the player need to input their name at the start?
--add more parts that have to do with Inventory that will affect the game later (as opposed to immediately after)
- */
+// Thea Vaughan & Blakeslee Krusen
 
 public class TheGame {
     public static Scanner scan = new Scanner(System.in);
