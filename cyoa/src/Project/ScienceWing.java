@@ -1,7 +1,5 @@
 package Project;
 
-import java.util.Scanner;
-
 public class ScienceWing {
 
     public static void firstChoice() {
@@ -50,8 +48,8 @@ public class ScienceWing {
                         + "Outside the second window is a drop down two stories. Could you make that jump? "
                         + "In the corner of the room, you notice two vials of chemicals, though you can't identify them."
                         + " Maybe if you got closer, you could figure out what to do with them..." +
-                        "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials \n (4) search for something else");
-        int n = scan.nextInt();
+                        "\n (1) go out the first window \n (2) go out the second window \n (3) inspect vials \n (4) search for something else \n (5) turn around and go to the biology classroom");
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println("As you climb out the window, the beast breaks through the door to the classroom." +
                     "Fortunately, you're able to make it onto one of the branches. Unfortunately, the beast is also able to do that.");
@@ -77,7 +75,7 @@ public class ScienceWing {
                     "You ignore all three options and instead search the room for a different item. You end up finding a rope and a shield — odd that they're in a chemistry class — but you can only hold one"
                             +
                             "\n (1) pick up rope \n (2) pick up shield");
-            int f = scan.nextInt();
+            int f = TheGame.scan.nextInt();
             if (f == 1) {
                 if (chemClass.isPresent(shield) == true) {
                     chemClass.removeAll();
@@ -105,6 +103,10 @@ public class ScienceWing {
             } else {
                 chemistryClass();
             }
+        } else if (n == 5) {
+            System.out.println(
+                    "You rush into the biology classroom, barely making it before the monster grabs you. You lock the door and look around the room.");
+            biologyClass();
         } else {
             System.out.println("Whoops, this isn't an option.");
             chemistryClass();
@@ -117,7 +119,7 @@ public class ScienceWing {
                         + " You decide you have two choices. You can either throw one of the vials at the creature and hope it does something, "
                         + "or you can mix the chemicals together and then throw it." +
                         "\n (1) throw without mixing \n (2) mix first");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println("You pick up one of the vials just as the beast breaks down the door." +
                     " You whip around and, with all your strength, throw the vial at the beast." +
@@ -156,7 +158,7 @@ public class ScienceWing {
                         +
                         "\n \n ...was it worth it?");
         System.out.println("\n [HERO ENDING] \n (1) play again \n (2) exit");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             TheGame.start();
         } else if (n == 2) {
@@ -168,14 +170,15 @@ public class ScienceWing {
     }
 
     public static void biologyClass() {
-        System.out.println("Do you... \n (1) hide in a corner \n (2) collect supplies \n (3) open cabinet");
-        int n = scan.nextInt();
+        System.out.println(
+                "Do you... \n (1) hide in a corner \n (2) collect supplies \n (3) open cabinet \n (4) turn around and go to chemistry classroom");
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println(
                     "You duck behind a desk in the corner of the room. You can hear the beast howling, but the sound soon fades. "
                             + "Is the monster... gone? \nWith nothing to do but stay there, you fall asleep, hoping everything will be okay in the morning.");
             System.out.println("[??? Ending] \n (1) play again \n (2) exit");
-            int x = scan.nextInt();
+            int x = TheGame.scan.nextInt();
             if (x == 1) {
                 TheGame.start();
             } else if (x == 2) {
@@ -201,6 +204,9 @@ public class ScienceWing {
                 bioLab.addItem(docs);
                 biologyClass();
             }
+        } else if (n == 4) {
+            System.out.println("You rush into the chemistry classroom, barely making it before the monster grabs you.");
+            chemistryClass();
         } else {
             biologyClass();
         }
@@ -216,13 +222,13 @@ public class ScienceWing {
     public static void collectSupplies() {
 
         System.out.println("What do you grab? \n (1) dissection scissors \n (2) scalpel \n (3) apple \n (4) chair");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) { // scissors
             bioLab.addItem(scissors);
             System.out.println("You pick up the scissors in one hand.");
             System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scalpel \n (2) apple \n (3) chair");
-            int a = scan.nextInt();
+            int a = TheGame.scan.nextInt();
             if (a == 1) {
                 bioLab.addItem(scalpel);
                 System.out.println("You pick up the scalpel in your other hand.");
@@ -244,7 +250,7 @@ public class ScienceWing {
             System.out.println("You pick up the scalpel in one hand.");
             System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) apple \n (3) chair");
-            int a = scan.nextInt();
+            int a = TheGame.scan.nextInt();
             if (a == 1) {
                 bioLab.addItem(scissors);
                 System.out.println("You pick up the scissors in your other hand.");
@@ -266,7 +272,7 @@ public class ScienceWing {
             System.out.println("You pick up the apple in one hand.");
             System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) scalpel \n (3) chair");
-            int a = scan.nextInt();
+            int a = TheGame.scan.nextInt();
             if (a == 1) {
                 bioLab.addItem(scissors);
                 System.out.println("You pick up the scissors in your other hand.");
@@ -288,7 +294,7 @@ public class ScienceWing {
             System.out.println("You pick up the chair in one hand.");
             System.out.println("You still have a free hand. Pick a second item.");
             System.out.println(" (1) scissors \n (2) scalpel \n (3) apple");
-            int a = scan.nextInt();
+            int a = TheGame.scan.nextInt();
             if (a == 1) {
                 bioLab.addItem(scissors);
                 System.out.println("You pick up the scissors in your other hand.");
@@ -327,11 +333,25 @@ public class ScienceWing {
                 System.out.println(
                         "While the beast is knocked down, you stab it in the heart with the scissors, killing him.");
                 bioLab.removeAll();
+                if (refusedDocs == true) {
+                    System.out.println(
+                            "Before leaving, you open the documents you stole from the cabinet, curious as to why the scientist was so insistent on keeping you from reading them. "
+                                    +
+                                    "Inside, you find page after page of instructions to make... a beast. THE beast. And it seems to require a human body. "
+                                    + "\n\"It's some sort of human revival,\" you realize. \"A way to bring someone back to life...\"");
+                }
                 TheGame.win();
             } else if (bioLab.isPresent(scalpel) == true) {
                 System.out.println(
                         "While the beast is knocked down, you stab it in the heart with the scalpel, killing him.");
                 bioLab.removeAll();
+                if (refusedDocs == true) {
+                    System.out.println(
+                            "Before leaving, you open the documents you stole from the cabinet, curious as to why the scientist was so insistent on keeping you from reading them. "
+                                    +
+                                    "Inside, you find page after page of instructions to make... a beast. THE beast. And it seems to require a human body. "
+                                    + "\n\"It's some sort of human revival,\" you realize. \"A way to bring someone back to life...\"");
+                }
                 TheGame.win();
             }
 
@@ -349,21 +369,25 @@ public class ScienceWing {
     public static void withDocuments() {
         System.out.println(
                 "Behind the beast, the science teacher strolls into the room. Upon seeing the documents in your hand, his smiles drops."
-                        + "\n\"Where did you get those?\" he demands. You hesitate. \"Alright then, don't talk,\" he says. \"Just give them to me and we won't have any trouble."
+                        + "\n\"Where did you get those?\" he demands. You hesitate. \"Alright then, "
+                        + TheGame.playerName
+                        + ", don't talk,\" he says. \"Just give them to me and we won't have any trouble."
                         +
                         "\n (1) give him the documents \n (2) refuse");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             refusedDocs = false;
             System.out.println(
                     "You slowly hand him the folder. As soon as he has it in his hands, he relaxes. \n\"Thank you,\" he says, \"you should be proud.\""
                             +
-                            "\n\"Why?\" You ask" +
+                            "\n\"Why?\" You ask." +
                             "\n\"Because your final moments will be used to do the correct thing.\" \nHe unleashes the beast.");
         } else if (n == 2) {
             refusedDocs = true;
             System.out.println(
                     "\"You... aren't giving it to me?\" the teacher says. \"Very well then...\" \nHe unleashes the beast.");
+            // if refusedDocs=true, then before each WIN message, you get to read the
+            // documents :)
         } else {
             withDocuments();
         }
