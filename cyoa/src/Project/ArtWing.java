@@ -1,16 +1,13 @@
 package Project;
 
-import java.util.Scanner;
-
 public class ArtWing {
-    static Scanner scan = new Scanner(System.in);
 
     static Item key = new Item("key");
     static Inventory artHall = new Inventory(2);
 
     public static void firstChoice() {
         System.out.println("You turn to the right and run down the arts hallway. Out of the corner of your eye, you see a shiny copper key on the floor. Do you...\n (1) Waste time and pick it up \n (2) Keep running");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             artHall.addItem(key);
             System.out.println("Holding the key in your left hand, you continue to run.\n");
@@ -19,7 +16,7 @@ public class ArtWing {
                         "(1) Hide in the classroom\n" + //
                         "(2) Keep running\n" + //
                         "");
-            int r = scan.nextInt();
+            int r = TheGame.scan.nextInt();
             if (r == 1) {
                 classroom();
             } else if (r == 2) {
@@ -35,7 +32,7 @@ public class ArtWing {
                             "(1) Hide in the classroom\n" + //
                             "(2) Keep running\n" + //
                             "");
-            int r = scan.nextInt();
+            int r = TheGame.scan.nextInt();
             if (r == 1) {
                 classroom();
             } else if (r == 2) {
@@ -59,7 +56,7 @@ public class ArtWing {
                             "(1) Crouch behind the teacher’s desk\n" +
                             "(2) Escape out the window\n" +
                             "(3) Find a weapon");
-            int n = scan.nextInt();
+            int n = TheGame.scan.nextInt();
             if (n == 1) {
                 System.out.println(
                         "You nervously squat under the desk, straining to hear the monster or your deranged science teacher. But it's quiet. Too quiet, you think.\n"
@@ -72,7 +69,7 @@ public class ArtWing {
                                 +
                                 "But the lock is hard to open, and as you struggle with it the science teacher and his pet monster pick the lock on the classroom door. You look over in terror at your teacher, who is holding back a creature ravenous for your flesh. \n"
                                 +
-                                "“It’s truly a pity,” he says sympathetically, “you were one of the good ones.” Then he lets the monster loose.\n\n");
+                                "“It’s truly a pity ”" + TheGame.playerName + " he says sympathetically, “you were one of the good ones.” Then he lets the monster loose.\n\n");
                 TheGame.death();
             } else if (n == 3) {
                 System.out.println("You run over to the large art cabinet and open it.");
@@ -84,7 +81,7 @@ public class ArtWing {
         }
         else{
             System.out.println("You try to open the door, but its locked and you don't have the key. Do you...\n (1) Go back and try to find the key\n (2) Keep running down the hallway");
-            int h = scan.nextInt();
+            int h = TheGame.scan.nextInt();
             if (h == 1) {
                 goBackForKey();
             } else if (h == 2) {
@@ -103,7 +100,7 @@ public class ArtWing {
                         "(1) Take the elevator downstairs\n" +
                         "(2) Take the stairs\n" +
                         "(3) Stay and fight the monster");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println(
                     "You quickly push the elevator button, nervously glancing back at the creature racing down the hallway towards you. Thankfully it arrives quickly, and you hurriedly get inside and click the GROUND FLOOR button. \n"
@@ -126,14 +123,14 @@ public class ArtWing {
     public static void goBackForKey() {
         System.out.println("You frantically dash back to the spot where you saw the key. But when you get there, the key is nowhere in sight. You fall to your knees, desperately searching the floor. 'Looking for something?' a gravelly voice calls.\n"+
         "You look up to see your evil science teacher, smirking, holding the missing key! Do you... \n (1) Steal it back from him \n (2) Confront him");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println("You slowly rise to your feet, never breaking eye contact with your teacher. 'I believe that you have something that I need,' you state assertively. In one swift motion, you karate-kick the old man and he falls to the floor. \n" +
             "As you stand over his dead body triumpantly, you fail to notice the 3 eyed monster creeping up behind you. It launches towards you, taking your head off in one swift bite.");
             TheGame.death();
         }
         else if (n == 2) {
-            System.out.println("'Mr. Jones, what is that thing?' you ask your teacher timidly. He laughs and replies, 'That thing is my pride and joy. She is the smartest, fastest, and strongest monster ever created. But more importantly, she is my baby.'\n" +
+            System.out.println("'Mr. Jones, what is that thing?' you ask your teacher timidly. He laughs and replies, '" + TheGame.playerName + ", that thing is my pride and joy. She is the smartest, fastest, and strongest monster ever created. But more importantly, she is my baby.'\n" +
             "Tears pool in his eyes as he softly says, 'I can't imagine a life without her.' \n You smile softly, moved by his devotion the monster. However your grin fades when he adds, 'That's why you have to die. I can't risk anyone else finding out, and taking my darling away. \n" +
             "Then he throws a rock at your head, killing you instantly.");
             TheGame.death();
@@ -152,13 +149,13 @@ public class ArtWing {
     public static void collectSupplies() {
         System.out.println(
                 "You find 4 items. Which one do you grab? \n (1) a box of thumbtacks \n (2) a colored pencil \n (3) scissors \n (4) paint tub \n");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             artHall.addItem(thumbtacks);
             System.out.println(
                     "You pick up the box and take off the lid. As the monster approaches, you stand against the wall. It roars loudly and you cower in fear. Just before it pounces, you throw the thumbtacks at its face. \n"
                             +
-                            "In a mere stroke of luck, one of the tacks impales the creature's eye, and it crashes to the floor, dead.");
+                            "In a mere stroke of luck, one of the tacks impales the creature's eye, and it crashes to the floor, dead. Your evil science teacher falls to the ground next the deceased monster, sobbing. While he is distracted, you run past him and escape.");
             TheGame.win();
         } else if (n == 2) {
             artHall.addItem(coloredPencil);

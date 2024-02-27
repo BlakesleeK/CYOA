@@ -11,11 +11,12 @@ import java.util.Scanner;
  */
 
 public class TheGame {
-    static Scanner scan = new Scanner(System.in);
+    public static Scanner scan = new Scanner(System.in);
+    public static String playerName;
 
     public static void main(String args[]) {
         System.out.println("Welcome to the game! What is your name? ");
-        String playerName = scan.nextLine();
+        playerName = scan.nextLine();
         System.out.println("Nice to meet you, " + playerName + ".");
         start();
     }
@@ -29,7 +30,7 @@ public class TheGame {
                     " You peer in through the window and you see your science teacher. What is he doing...?" +
                     " Suddenly, a huge monster runs into view. Terrified, you are frozen in place. The beast notices you and growls, notifying his master of your presence.\n"
                     + "The science teacher turns to you, smiles, and says, "
-                    + "\"Oh, hello there! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n"
+                    + "\"Oh, hello " + playerName + "! Would you like to come see what I've created?\" \n\"I have to get away from him!\" You think.\n"
                     +
                     "You are standing in the middle of the hallway. Do you... " +
                     "\n (1) Go to the science wing \n (2) Go to the arts wing");
@@ -53,7 +54,7 @@ public class TheGame {
         if (n == 1) {
             start();
         } else if (n == 2) {
-            System.out.println("Sorry to hear that :(");
+            System.out.println("Sorry to hear that :( \n Bye " + playerName + ".");
             System.exit(0);
         } else {
             death();
@@ -67,7 +68,7 @@ public class TheGame {
         if (n == 1) {
             start();
         } else if (n == 2) {
-            System.out.println("Sorry to hear that... :( \n Bye for now!");
+            System.out.println("Sorry to hear that... :( \n Bye " + playerName + ".");
             System.exit(0);
         } else {
             win();

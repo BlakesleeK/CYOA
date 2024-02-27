@@ -3,7 +3,6 @@ package Project;
 import java.util.Scanner;
 
 public class ScienceWing {
-    static Scanner scan = new Scanner(System.in);
 
     public static void firstChoice() {
         System.out.println("Running down the hallway, you quickly find yourself at a dead end." +
@@ -12,7 +11,7 @@ public class ScienceWing {
                 +
                 " Directly in front of you is a locker that you could hide in."
                 + "\n Where do you go? \n (1) Chemistry classroom \n (2) Biology classroom \n (3) Locker");
-        int n = scan.nextInt();
+        int n = TheGame.scan.nextInt();
         if (n == 1) {
             System.out.println("You quickly run into the classroom and lock the door behind you. " +
                     "Hopefully this will give you a few minutes to figure out how to escape.");
