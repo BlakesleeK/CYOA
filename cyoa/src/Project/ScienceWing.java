@@ -154,7 +154,8 @@ public class ScienceWing {
 
     public static void heroEnding() {
         System.out.println(
-                "\nThe following day, word spreads quickly of your sacrifice. You are remembered as a hero of the town... "
+                "\nThe following day, word spreads quickly of your sacrifice." + TheGame.playerName
+                        + " is remembered as a hero of the town... "
                         +
                         "\n \n ...was it worth it?");
         System.out.println("\n [HERO ENDING] \n (1) play again \n (2) exit");
@@ -385,7 +386,8 @@ public class ScienceWing {
         } else if (n == 2) {
             refusedDocs = true;
             System.out.println(
-                    "\"You... aren't giving it to me?\" the teacher says. \"Very well then...\" \nHe unleashes the beast.");
+                    "\"You... aren't giving it to me?\" the teacher says. \"Very well then. I'm sorry to do this, "
+                            + TheGame.playerName + ". You were my favorite student.\" \nHe unleashes the beast.");
             // if refusedDocs=true, then before each WIN message, you get to read the
             // documents :)
         } else {
