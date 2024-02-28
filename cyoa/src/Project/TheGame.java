@@ -9,6 +9,8 @@ public class TheGame {
     public static String playerName;
 
     public static void main(String args[]) {
+        System.out.println(
+                "\nNOTE: Throughout the game, you will be given lists of options. Please type the number corresponding to the option you wish to choose.\n");
         System.out.println("Welcome to the game! What is your name? ");
         playerName = scan.nextLine();
         System.out.println("Nice to meet you, " + playerName + ".");
@@ -89,7 +91,7 @@ public class TheGame {
         if (n == 1) {
             start();
         } else if (n == 2) {
-            System.out.println("Sorry to hear that... :( \n Bye " + playerName + ".");
+            System.out.println("Sorry to hear that... :( \n Bye " + playerName + "!");
             System.exit(0);
         } else {
             win();

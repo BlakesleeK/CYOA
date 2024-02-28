@@ -72,7 +72,7 @@ public class ScienceWing {
             vials();
         } else if (n == 4) {
             System.out.println(
-                    "You ignore all three options and instead search the room for a different item. You end up finding a rope and a shield — odd that they're in a chemistry class — but you can only hold one"
+                    "You ignore all three options and instead search the room for a different item. You end up finding a rope and a shield — odd that they're in a chemistry class — but you can only hold one."
                             +
                             "\n (1) pick up rope \n (2) pick up shield");
             int f = TheGame.scan.nextInt();

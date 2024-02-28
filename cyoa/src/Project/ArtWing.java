@@ -69,7 +69,7 @@ public class ArtWing {
                                 +
                                 "But the lock is hard to open, and as you struggle with it the science teacher and his pet monster pick the lock on the classroom door. You look over in terror at your teacher, who is holding back a creature ravenous for your flesh. \n"
                                 +
-                                "“It’s truly a pity ”" + TheGame.playerName + " he says sympathetically, “you were one of the good ones.” Then he lets the monster loose.\n\n");
+                                "\"It’s truly a pity" + TheGame.playerName + "\" he says sympathetically, \"you were one of the good ones.\" Then he lets the monster loose.\n\n");
                 TheGame.death();
             } else if (n == 3) {
                 System.out.println("You run over to the large art cabinet and open it.");
@@ -121,17 +121,17 @@ public class ArtWing {
     }
 
     public static void goBackForKey() {
-        System.out.println("You frantically dash back to the spot where you saw the key. But when you get there, the key is nowhere in sight. You fall to your knees, desperately searching the floor. 'Looking for something?' a gravelly voice calls.\n"+
+        System.out.println("You frantically dash back to the spot where you saw the key. But when you get there, the key is nowhere in sight. You fall to your knees, desperately searching the floor. \"Looking for something?\" a gravelly voice calls.\n"+
         "You look up to see your evil science teacher, smirking, holding the missing key! Do you... \n (1) Steal it back from him \n (2) Confront him");
         int n = TheGame.scan.nextInt();
         if (n == 1) {
-            System.out.println("You slowly rise to your feet, never breaking eye contact with your teacher. 'I believe that you have something that I need,' you state assertively. In one swift motion, you karate-kick the old man and he falls to the floor. \n" +
+            System.out.println("You slowly rise to your feet, never breaking eye contact with your teacher. \"I believe that you have something that I need,\" you state assertively. In one swift motion, you karate-kick the old man and he falls to the floor. \n" +
             "As you stand over his dead body triumpantly, you fail to notice the 3 eyed monster creeping up behind you. It launches towards you, taking your head off in one swift bite.");
             TheGame.death();
         }
         else if (n == 2) {
-            System.out.println("'Mr. Jones, what is that thing?' you ask your teacher timidly. He laughs and replies, '" + TheGame.playerName + ", that thing is my pride and joy. She is the smartest, fastest, and strongest monster ever created. But more importantly, she is my baby.'\n" +
-            "Tears pool in his eyes as he softly says, 'I can't imagine a life without her.' \n You smile softly, moved by his devotion the monster. However your grin fades when he adds, 'That's why you have to die. I can't risk anyone else finding out, and taking my darling away. \n" +
+            System.out.println("\"Mr. Jones, what is that thing?\" you ask your teacher timidly. He laughs and replies, \"" + TheGame.playerName + ", that thing is my pride and joy. She is the smartest, fastest, and strongest monster ever created. But more importantly, she is my baby.\"\n" +
+            "Tears pool in his eyes as he softly says, 'I can't imagine a life without her.' \n You smile softly, moved by his devotion the monster. However your grin fades when he adds, \"That's why you have to die. I can't risk anyone else finding out, and taking my darling away.\" \n" +
             "Then he throws a rock at your head, killing you instantly.");
             TheGame.death();
         }
